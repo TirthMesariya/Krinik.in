@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+  <meta content="Themesdesign" name="author" />
+
+  <link rel="icon" href="./assets/images/krinikIn_Logo.svg" type="image/x-icon">
+
+  <!-- Bootstrap Css -->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <!-- Icons Css -->
+  <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+  <!-- App Css-->
+  <link href="./assets/css/app.css" rel="stylesheet" type="text/css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+
+<body>
+
+  <div id="loader" style="display: none;">
+    <div class="lds-spinner">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div id="content">
+
+    <form id="login-form">
+      <div class="mains account-pages my-5 pt-sm-5 d-flex justify-content-center align-items-center">
+        <div class="container">
+          <!-- end row -->
+          <div class="row justify-content-center">
+            <div class="col-xl-5 col-sm-8">
+              <div class="card">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <!-- Logo Section -->
+                    <div class="text-center justify-content-center align-items-center mt-4">
+                      <img src="./assets/images/krinikIn_Logo.svg" alt="Logo" class="logo mb-3"
+                        style="width: 175px; height: 75px;" />
+                      <h2 class="text-dark mb-1">Login Form</h2>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body p-4">
+                  <div class="p-2">
+                    <form class="form-horizontal">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <!-- Email Input -->
+                          <div class="form-group form-group-custom mb-4">
+                            <input type="email" class="form-control" id="email" placeholder="Email" />
+                            <div id="error-email"></div>
+                          </div>
+
+                          <!-- Password Input -->
+                          <div class="form-group form-group-custom mb-4">
+                            <input type="password" class="form-control" id="password" placeholder="Password" />
+                            <div id="error-password"></div>
+                          </div>
+
+                          <!-- Admin Type Dropdown -->
+                          <div class="form-group form-group-custom mb-4">
+                            <select class="form-control form-select" id="admin-type">
+                              <option value="">Select Admin Type</option>
+                              <option value="admin">Admin</option>
+                              <option value="super admin">Super Admin</option>
+                            </select>
+                            <div id="error-admin-type"></div>
+                          </div>
+
+                          <!-- Forget Password Link -->
+                          <div class="text-end mb-3" id="forget-div">
+                            <a href="#" id="forget-password" class="text-primary fontSizebig fs-6">Forgot Password?</a>
+                          </div>
+
+
+                          <!-- Error Message -->
+                          <div id="error-message"></div>
+
+                          <!-- Submit Button -->
+                          <div class="mt-4 text-center">
+                            <button class="btn btn-primary1 fs-5 login-btn" id="LoginOTP" type="submit">
+                              Login
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end row -->
+        </div>
+      </div>
+    </form>
+
+  </div>
+
+
+  <script type="module" src="./assets/jsfile/loader.js"></script>
+
+
+
+  <script type="module" src="./assets/jsfile/index.js"></script>
+  <script src="assets/libs/jquery/jquery.min.js"></script>
+  <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+  <script src="assets/libs/simplebar/simplebar.min.js"></script>
+  <script src="assets/libs/node-waves/waves.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
+
+</body>
+
+</html>
