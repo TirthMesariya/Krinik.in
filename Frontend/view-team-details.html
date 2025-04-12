@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>View Team Details</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+  <meta content="Themesdesign" name="author" />
+  <!-- App favicon -->
+  <!-- <link rel="shortcut icon" href="./assets/images/favicon.ico"> -->
+  <link rel="icon" href="./assets/images/krinikIn_Logo.svg" type="image/x-icon">
+
+
+  <!-- jvectormap -->
+  <!-- <link href="./assets/libs/jqvmap/jqvmap.min.css" rel="stylesheet" /> -->
+
+  <!-- Bootstrap Css -->
+  <link href="./assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <!-- Icons Css -->
+  <link href="./assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+  <!-- App Css-->
+  <link href="./assets/css/app.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<style>
+    .circle {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: #f2f2f2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        /* overflow: hidden; */
+        position: relative;
+
+    }
+
+    .circle img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .circle i {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        font-size: 25px;
+        color: #555;
+    }
+
+    .bb {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .ff {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+    }
+
+    tr {
+        text-align: center;
+
+    }
+
+    th {
+        color: black;
+    }
+
+
+
+
+    @media only screen and (max-width: 320px) {
+        .form-group-custom span {
+            font-size: 14px !important;
+        }
+
+
+
+    }
+</style>
+
+
+<body data-topbar="colored">
+  <!-- Begin page -->
+  <div id="loader" style="display: none;">
+    <div class="lds-spinner">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div id="content">
+  <div id="layout-wrapper">
+    <header id="page-topbar" class="">
+      <div class="navbar-header ">
+        <div class="d-flex ">
+          <!-- LOGO -->
+          <div class="navbar-brand-box">
+            <a href="./dashboard.html" class="logo logo-dark">
+              <span class="logo-sm">
+                
+                <img src="./assets/images/krinikIn_Logo.svg" alt="" />
+              </span>
+              <span class="logo-lg">
+              
+                <img src="./assets/images/krinikIn_Logo.svg" alt=""  />
+              </span>
+            </a>
+
+            <a href="index.html" class="logo logo-light ">
+              <span class="logo-sm">
+             
+                <img src="./assets/images/krinikIn_Logo.svg" alt=""  />
+              </span>
+              <span class="logo-lg">
+                
+                <img src="./assets/images/krinikIn_Logo.svg" alt="" />
+              </span>
+            </a>
+          </div>
+
+          <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect " id="vertical-menu-btn">
+            <i class="mdi mdi-backburger "></i>
+          </button>
+
+          <!-- App Search-->
+          <!-- <form class="app-search d-none d-lg-block">
+                            <div class="position-relative mt-3">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="mdi mdi-magnify"></span>
+                            </div>
+                        </form> -->
+        </div>
+
+       
+        
+      </div>
+    </header>
+
+         <!-- ========== Left Sidebar Start ========== -->
+         <div class="vertical-menu ">
+          <div data-simplebar class="h-100 ">
+            <!--- Sidemenu -->
+            <div id="sidebar-menu" class="">
+              <!-- Left Menu Start -->
+              <ul class="metismenu list-unstyled " id="side-menu">
+                <li class="menu-title">Menu</li>
+    
+                <li>
+                  <a href="./dashboard.html" class="waves-effect">
+                    <div class=" icons-sm icon-set">
+                      <span class="material-symbols-outlined icon-margin">
+                        dashboard
+                        </span>
+                   
+                    <span>Dashboard</span>
+                    </div>
+                  </a>
+                </li>
+    
+                <li>
+                  <a href="./user.html" class="waves-effect">
+                    <div class="icons-sm icon-set">
+                      <span class="material-symbols-outlined icon-margin">
+                        person
+                        </span>
+                   
+                    <span>User</span>
+                  </div>
+                  </a>
+                </li>
+    
+                <li class="otp-exempt" style="display:none">
+                  <a href="javascript: void(0);" class=" ">
+                    <div class="icons-sm icon-set ">
+                      <span class="material-symbols-outlined icon-margin">
+                        sports_cricket
+                        </span>                    
+                        <span class="has-arrow waves-effect ">Sports Configuration</span>
+                                        
+                      </div> 
+                      
+                    </a>
+    
+                  <ul class="sub-menu" aria-expanded="false">
+                    <li><a href="./manage-league.html">Manage Leagues</a></li>
+                    <li><a href="./manage-team.html">Manage Teams</a></li>
+                    <li><a href="./manage-player.html">Manage Players</a></li>
+                  </ul>
+                </li>
+                
+                <li class="otp-exempt" style="display:none">
+                  <a href="javascript: void(0);" class=" ">
+                    <div class="icons-sm icon-set ">
+                      <span class="material-symbols-outlined icon-margin">
+                        crossword
+                        </span>                   
+                        <span class="has-arrow has-arrow1 waves-effect ">Manage Contest</span>
+                                        
+                      </div> 
+                      
+                    </a>
+    
+                  <ul class="sub-menu" aria-expanded="false">
+                    <li><a href="./manage-match.html">Manage Match</a></li>
+                    <li><a href="./manage-pool.html">Manage Pools</a></li>
+                  </ul>
+                </li>
+    
+                
+                <li class="otp-exempt" style="display:none">
+                  <a href="./all-transaction.html" class="waves-effect">
+                    <div class="icons-sm icon-set ">
+                      <span class="material-symbols-outlined icon-margin">
+                        receipt_long
+                        </span>
+                        <span>All Transaction</span>
+                    </div>
+                  </a>
+                </li>
+                <li >
+                  <a href="./add-user-money.html" class="waves-effect">
+                    <div class="icons-sm icon-set ">
+                      <span class="material-symbols-outlined icon-margin">
+                        money_bag
+                        </span>
+                        <span>Add User Money</span>
+                    </div>
+                  </a>
+                </li>
+    
+                
+    
+                <li>
+                  <a href="./account-setting.html" class="waves-effect">
+                    <div class="icons-sm icon-set ">
+                      <span class="material-symbols-outlined icon-margin">
+                        settings
+                        </span>
+                        <span>Account Setting</span>
+                    </div>
+                  </a>
+                </li>
+                <li class="otp-exempt" style="display:none">
+                  <a href="./withdrawal.html" class="waves-effect">
+                    <div class="icons-sm icon-set ">
+                      <span class="material-symbols-outlined icon-margin">
+                        payments
+                        </span>
+                        <span>Withdrawal Request</span>
+                    </div>
+                  </a>
+                </li>
+                <li class="otp-exempt" style="display:none">
+                  <a href="./advertise.html" class="waves-effect">
+                    <div class="icons-sm icon-set ">
+                      <span class="material-symbols-outlined icon-margin">
+                        ads_click
+                        </span>
+                        <span>Advertise</span>
+                    </div>
+                  </a>
+                </li>
+                <li class="otp-exempt" style="display:none">
+                  <a href="./monthly-tds.html" class="waves-effect">
+                    <div class="icons-sm icon-set ">
+                      <span class="material-symbols-outlined icon-margin">
+                        receipt_long
+                        </span>
+                        <span>Monthly TDS</span>
+                    </div>
+                  </a>
+                </li>
+                <li class="otp-exempt" style="display:none">
+                  <a href="./manage-scratch.html" class="waves-effect">
+                    <div class="icons-sm icon-set ">
+                      <span class="material-symbols-outlined icon-margin">
+                        award_star
+                        </span>
+                        <span>Scratch</span>
+                    </div>
+                  </a>
+                </li>
+               
+                <li class="otp-exempt" style="display:none">
+                  <a href="./kyc.html" class="waves-effect">
+                    <div class="icons-sm icon-set">
+                      <span class="material-symbols-outlined icon-margin">
+                        person
+                        </span>
+                   
+                    <span>KYC</span>
+                  </div>
+                  </a>
+                </li>
+                <li >
+                  <a href="./feedback.html" class="waves-effect">
+                    <div class="icons-sm icon-set">
+                      <span class="material-symbols-outlined icon-margin">
+                        forum
+                        </span>
+                   
+                    <span>Feedback</span>
+                  </div>
+                  </a>
+                </li>
+                <li class="otp-exempt" style="display:none">
+                  <a href="./monthly-report.html" class="waves-effect">
+                    <div class="icons-sm icon-set">
+                      <span class="material-symbols-outlined icon-margin">
+                        newspaper
+                        </span>
+                   
+                    <span>Report</span>
+                  </div>
+                  </a>
+                </li>
+                <li class="otp-exempt" style="display:none">
+                  <a href="./monthly-money.html" class="waves-effect">
+                    <div class="icons-sm icon-set ">
+                      <span class="material-symbols-outlined icon-margin">
+                        receipt_long
+                        </span>
+                        <span>Monthly Money</span>
+                    </div>
+                  </a>
+                </li>
+    
+                <li>
+                  <a href="#" class="waves-effect " id="logoutButton">
+                    <div class=" icons-sm icon-set ">
+                      <span class="material-symbols-outlined icon-margin ">
+                        logout
+                        </span>
+                        <span class="">Logout</span>
+                    </div>
+                  </a>
+                </li>
+    
+              
+                        </ul>
+            </div>
+            <!-- Sidebar -->
+          </div>
+        </div>
+    <!-- Left Sidebar End -->
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
+      <div class="page-content">
+        <!-- Page-Title -->
+        <div class="page-title-box">
+          <div class="container-fluid">
+            <div class="row align-items-center">
+              <div>
+                <h4 class="page-title mb-1">View Team Detail</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end page title end breadcrumb -->
+
+       
+
+        <div class="page-content-wrapper">
+          <div class="container-fluid">
+            <div class="row">
+              
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  d-flex justify-content-end">
+               
+              
+              </div>
+            </div>
+            <!-- end row -->
+  
+            <div class="row">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="card">
+                      
+                      <div class="card-body">
+                        <div class="form-group mb-4">
+                          <div class="bb">
+                            <div>
+                              <div class="circle" id="image-circle">
+                                <img id="leagueImagePreview" src="" alt="Team Image">
+                              </div>
+                              <input type="file" id="image-input" accept="image/*" style="display: none;"
+                                onchange="previewImage(event)">
+                              
+                            </div>
+                            
+        
+                            <div class="form-group form-group-custom ">
+                              <!-- <label for="startLeagueDate">Start League Date</label> -->
+                              <input type="text" class="form-control" id="startLeagueDate" readonly>
+                            </div>
+        
+                            <!-- <div class="form-group form-group-custom mb-4"> -->
+                              <!-- <label for="endLeagueDate">End League Date</label> -->
+                              <!-- <input type="text" class="form-control" id="endLeagueDate" readonly>
+                            </div> -->
+                          </div>
+                          <div class="mt-3">
+                            <h5 id="leagueNameHeading">Team Name</h5>
+                          </div>
+                        </div>
+                        <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                          <div class="row">
+                            <div class="table-rep-plugin">
+                              <div class="table-responsive mb-0 table table-scroll" data-pattern="priority-columns"
+                                id="table-scrolling">
+                                <table id="tech-companies-1"
+                                  class="table table-striped text-center align-items-center fixed-table">
+                                  <thead>
+                                    <tr class="text-center fs-5">
+                                      <th >No.</th>
+                                      <!-- <th >Player Image</th> -->
+                                      <!-- <th >Player Short Name</th> -->
+                                      <th colspan="3" >Player Name</th>
+                                      <!-- Add more headers as needed -->
+                                    </tr>
+                                  </thead>
+                                  <tbody id="playerList">
+                                    <!-- Team rows will be dynamically inserted here -->
+                                  </tbody>
+                                </table>
+  
+                              </div>
+                              <div id="noDataFound" style="display:none;" class="no-data-div">
+                                <img src="./assets/images/no-data.jpg" alt="No Data Found">
+                              </div>
+                            </div>
+                          </div>
+  
+                          <div class="row pagi" id="pagination" style="display:none">
+                            <div class="col-sm-12 col-md-5">
+                              <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">
+                                Showing 1 to 10 of 57 leagues
+                              </div>
+                            </div>
+                            <div class="col-sm-12 col-md-7">
+                              <div class="dataTables_paginate paging_simple_numbers pagination index_buttons"
+                                id="datatable_paginate">
+                                <ul class="pagination-list d-flex list-unstyled"></ul>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="d-flex justify-content-end pagi">
+                            
+                            <button  type="button" id="download-btn" class="btn dropbtn-color addnew">Download Excel</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end col -->
+                </div>
+                <!-- end row -->
+              </div>
+            </div>
+            <!-- end row -->
+          </div>
+          <!-- container-fluid -->
+        </div>
+        <!-- END layout-wrapper -->
+        </div>
+        <footer class="footer">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-6">2024 © Krinik.</div>
+              <div class="col-sm-6">
+                <!-- <div class="text-sm-end d-none d-sm-block">
+                  Crafted with <i class="mdi mdi-heart text-danger"></i> by
+                  Themesdesign
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </footer>
+        </div>
+        </div>
+        </div>
+
+        <script src="./assets/js/logout.js"></script>
+
+
+        <!-- JAVASCRIPT -->
+        <script src="./assets/libs/jquery/jquery.min.js"></script>
+        <script src="./assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="./assets/libs/metismenu/metisMenu.min.js"></script>
+        <script src="./assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="./assets/libs/node-waves/waves.min.js"></script>
+
+        <!-- <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script> -->
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        <!-- datepicker -->
+
+
+        <!-- apexcharts -->
+        <!-- <script src="./assets/libs/apexcharts/apexcharts.min.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="./assets/libs/jquery-knob/jquery.knob.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/xlsx@0.17.4/dist/xlsx.full.min.js"></script>
+
+        <!-- Jq vector map -->
+        <!-- <script src="./assets/libs/jqvmap/jquery.vmap.min.js"></script> -->
+        <!-- <script src="./assets/libs/jqvmap/maps/jquery.vmap.usa.js"></script> -->
+
+        <script src="./assets/js/pages/dashboard.init.js"></script>
+
+        <script src="./assets/js/app.js"></script>
+        <script type="module" src="./assets/js/admincheck.js"></script>
+
+        <script type="module" src="./assets/jsfile/view-team-details.js"></script>
+  <script type="module" src="./assets/js/initial.js"></script>
+
+</body>
+
+</html>
