@@ -1,0 +1,21 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: clone repo into ec2 server
+      run: git clone https://github.com/TirthMesariya/Krinik.in.git
+    - name: Build the Docker image
+      run: docker build 
