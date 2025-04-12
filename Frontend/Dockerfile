@@ -1,11 +1,8 @@
 # Use official NGINX image
-FROM nginx:alpine
+FROM Django:latest
 
 # Set working directory
-WORKDIR /usr/share/nginx/html
-
-# Remove default NGINX static files
-RUN rm -rf ./*
+WORKDIR ./app
 
 # Copy frontend files to the container
 COPY . .
@@ -13,5 +10,3 @@ COPY . .
 # Expose port 80
 EXPOSE 80
 
-# Start NGINX
-CMD ["nginx", "-g", "daemon off;"]
