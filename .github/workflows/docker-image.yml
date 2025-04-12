@@ -18,4 +18,5 @@ jobs:
     - name: clone repo into ec2 server
       run: git clone https://github.com/TirthMesariya/Krinik.in.git
     - name: Build the Docker image
-      run: docker build 
+      run: docker compose -f docker-compose.yml up -d --build
+      
