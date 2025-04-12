@@ -10,13 +10,30 @@ jobs:
 
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
     - uses: actions/checkout@v4
 
     - name: clone repo into ec2 server
       run: git clone https://github.com/TirthMesariya/Krinik.in.git
+
+    - name: install git on server
+      run: sudo apt install git -y
+    - name: install docker on server
+      run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            ca-certificates \
+            curl \
+            gnupg \
+            lsb-release
+          sudo apt-get update
+          sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+          sudo usermod -aG docker $USER
+          newgrp docker
+          
     - name: Build the Docker image
       run: docker compose -f docker-compose.yml up -d --build
       
