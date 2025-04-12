@@ -1,5 +1,5 @@
 # Use official NGINX image
-FROM Django:latest
+FROM django:latest
 
 # Set working directory
 WORKDIR ./app
