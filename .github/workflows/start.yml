@@ -37,5 +37,6 @@ jobs:
           newgrp docker
           
     - name: Build the Docker image
-      run: docker compose -f docker-compose.yml up -d --build
+      run: sudo docker compose -f docker-compose.yml up -d --build
+
       
