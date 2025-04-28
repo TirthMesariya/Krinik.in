@@ -14,7 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-
+    #chechkout
     - name: clone repo into ec2 server
       run: git clone https://github.com/TirthMesariya/Krinik.in.git
 
