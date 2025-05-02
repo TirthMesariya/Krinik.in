@@ -34,7 +34,7 @@
 
           - name: docker image craete
             run: |
-                 cd /home/ubuntu/frontend/
+                 cd /home/ubuntu/Frontend/
                  docker build -t frontendimage .
 
 
