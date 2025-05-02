@@ -7,7 +7,7 @@
 
    Hello-frontend:
   
-      runs-on: Frontend
+      runs-on: self-hosted, frontend-runner
 
       steps:
           - uses: actions/checkout@v4
