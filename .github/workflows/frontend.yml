@@ -32,7 +32,7 @@
                    sudo usermod -aG docker $USER
                    newgrp docker
 
-          - name: docker image craete
+          - name: docker image craete on ec2
             run: |
                  cd /home/ubuntu/Frontend/
                  docker build -t frontendimage .
