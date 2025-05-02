@@ -1,0 +1,43 @@
+ name: Frontend server
+ on: 
+   push :
+      branches: ["main"]
+
+ jobs :
+
+   Hello-frontens:
+  
+      runs-on: self-hosted
+
+      steps:
+          - uses: actions/checkout@v4
+
+          - name: clone repo from git
+            run: git clone https://github.com/TirthMesariya/Krinik.in.git
+          - name: install git on server
+            run: sudo apt install git -y
+          - name: install docker on ec2 server
+            run: |
+                  sudo apt-get update
+                  sudo apt-get install -y \
+                  ca-certificates \
+                  curl \
+                  gnupg \
+                   lsb-release
+                  sudo apt-get update
+                  curl -fsSL https://get.docker.com | sudo sh
+
+                  sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+
+                   sudo usermod -aG docker $USER
+                   newgrp docker
+
+          - name: docker image craete
+            run: |
+                 cd /home/ubuntu/frontend/
+                 docker build -t frontendimage .
+
+
+
+
+                   
