@@ -1,3 +1,31 @@
 ---
+- name: Deploy Docker app using Docker Compose
+  hosts: localhost
+  become: yes
+  tasks:
 
--name:
+    - name: Ensure Docker is installed
+      apt:
+        name:
+          - docker.io
+          - docker-compose
+        state: present
+        update_cache: yes
+
+    - name: Add current user to docker group
+      user:
+        name: "{{ ansible_user }}"
+        groups: docker
+        append: yes
+
+    - name: Pull latest changes (if needed)
+      git:
+        repo: 'https://github.com/TirthMesariya/Krinik.in.git'
+        dest: ~/Krinik.in
+        force: yes
+
+    - name: Change directory to project root
+      ansible.builtin.shell: |
+        cd ~/Krinik.in && docker compose -f docker-compose.yml up -d --build
+      args:
+        chdir: ~/Krinik.in
