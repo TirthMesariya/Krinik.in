@@ -5,7 +5,7 @@
 
  jobs :
 
-   Hello-frontens:
+   Hello-frontend:
   
       runs-on: self-hosted
 
