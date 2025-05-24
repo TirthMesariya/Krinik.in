@@ -16,12 +16,6 @@ jobs:
 
  
       - name: Run Ansible Playbook
-        env:
-          ANSIBLE_HOST_KEY_CHECKING: "False"
-        run: |
-          eval "$(ssh-agent -s)"
-          ssh-add ~/.ssh/id_rsa
-          ansible-playbook deployment.yml -i inventory.ini
-
+        run: ansible all -m ping
 
     
