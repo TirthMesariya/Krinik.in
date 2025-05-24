@@ -1,27 +1,26 @@
 ---
+- name: Azure Deployment
+  hosts: azure
+  become: true
 
- - name: aws deploy 
-   host: aws
-   become: true
+  tasks:
+    - name: Install dependencies
+      apt: 
+        name: 
+          - git
+          - apt-transport-https
+          - ca-certificates
+          - curl 
+          - software-properties-common
+        state: present
+        update_cache: yes
 
-  - name: install depedensi
-    apt: 
-      name: 
-        - git
-        - apt-transsport-https
-        - ca-certificates
-        - curl 
-        - software-properties-common
-      state: present
-
-      
     - name: Install Docker
       apt:
         name: docker-ce
         state: present
         update_cache: yes
 
-        
     - name: Ensure Docker is started
       service:
         name: docker
@@ -36,12 +35,12 @@
 
     - name: Clone the Git repository
       git:
-        repo: "{{ https://github.com/TirthMesariya/Krinik.in.git }}"
-        dest: "{{ home/ubuntu/docker-compose.yml}}"
+        repo: https://github.com/TirthMesariya/Krinik.in.git
+        dest: /home/azureuser/Krinik.in
         version: main
         force: yes
-          
+
     - name: Run Docker Compose
       command: docker-compose up --build -d
       args:
-        chdir: "{{ home/ubuntu/docker-compose.yml }}"
+        chdir: /home/azureuser/Krinik.in
