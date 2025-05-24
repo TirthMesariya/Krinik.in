@@ -3,15 +3,18 @@
   hosts: azure
   become: true
 
+   vars:
+    docker_compose_version: "v2.27.0"
+    git_repo_url: "https://github.com/your-user/your-repo.git"
+    clone_dest: "/opt/your-repo"
+
   tasks:
-    - name: Install system dependencies
+    - name: Install required system packages
       apt:
         name:
           - apt-transport-https
           - ca-certificates
           - curl
-          - gnupg
-          - lsb-release
           - software-properties-common
           - git
         state: present
@@ -24,45 +27,32 @@
 
     - name: Add Docker repository
       apt_repository:
-        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release | lower }} stable"
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
         state: present
 
-    - name: Install Docker Engine
+    - name: Install Docker
       apt:
-        name: docker-ce
-        state: present
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+        state: latest
         update_cache: yes
 
-    - name: Ensure Docker is started and enabled
-      service:
-        name: docker
-        state: started
-        enabled: true
-
-    - name: Install Docker Compose (v2.24.6)
+    - name: Download Docker Compose
       get_url:
-        url: https://github.com/docker/compose/releases/download/v2.24.6/docker-compose-linux-x86_64
+        url: "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-linux-x86_64"
         dest: /usr/local/bin/docker-compose
         mode: '0755'
 
-    - name: Verify Docker Compose installation
-      command: docker-compose --version
-      register: compose_version_output
-      changed_when: false
-
-    - name: Debug Docker Compose version
-      debug:
-        var: compose_version_output.stdout
-
-    - name: Clone the Git repository
+    - name: Clone Git repository
       git:
-        repo: https://github.com/TirthMesariya/Krinik.in.git
-        dest: /home/azureuser/Krinik.in
-        version: main
-        force: yes
+        repo: "{{https://github.com/TirthMesariya/Krinik.in.git }}"
+        dest: "{{ /home/tirth/ }}"
+        update: yes
 
     - name: Run Docker Compose
       command: docker-compose up --build -d
       args:
-        chdir: /home/azureuser/Krinik.in
+        chdir: /home/tirth/Krinik.in
 
