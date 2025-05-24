@@ -16,6 +16,6 @@ jobs:
 
  
       - name: Run Ansible Playbook
-        run: ansible all -m ping
+        run:  ansible-playbook deployment.yml
 
     
