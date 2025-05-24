@@ -1,0 +1,47 @@
+---
+
+ - name: aws deploy 
+   host: aws
+   become: true
+
+  - name: install depedensi
+    apt: 
+      name: 
+        - git
+        - apt-transsport-https
+        - ca-certificates
+        - curl 
+        - software-properties-common
+      state: present
+
+      
+    - name: Install Docker
+      apt:
+        name: docker-ce
+        state: present
+        update_cache: yes
+
+        
+    - name: Ensure Docker is started
+      service:
+        name: docker
+        state: started
+        enabled: true
+
+    - name: Install Docker Compose
+      get_url:
+        url: https://github.com/docker/compose/releases/download/v2.24.6/docker-compose-linux-x86_64
+        dest: /usr/local/bin/docker-compose
+        mode: '0755'
+
+    - name: Clone the Git repository
+      git:
+        repo: "{{ https://github.com/TirthMesariya/Krinik.in.git }}"
+        dest: "{{ home/ubuntu/}}"
+        version: main
+        force: yes
+        
+    - name: Run Docker Compose
+      command: docker-compose up --build -d
+      args:
+        chdir: "{{ home/ubuntu/ }}"
