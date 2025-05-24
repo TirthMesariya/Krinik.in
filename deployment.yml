@@ -1,37 +1,58 @@
 ---
-- name: Azure Deployment
+- name: Azure Deployment with Docker and Compose
   hosts: azure
   become: true
 
   tasks:
-    - name: Install dependencies
-      apt: 
-        name: 
-          - git
+    - name: Install system dependencies
+      apt:
+        name:
           - apt-transport-https
           - ca-certificates
-          - curl 
+          - curl
+          - gnupg
+          - lsb-release
           - software-properties-common
+          - git
         state: present
         update_cache: yes
 
-    - name: Install Docker
+    - name: Add Docker GPG key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker repository
+      apt_repository:
+        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release | lower }} stable"
+        state: present
+
+    - name: Install Docker Engine
       apt:
         name: docker-ce
         state: present
         update_cache: yes
 
-    - name: Ensure Docker is started
+    - name: Ensure Docker is started and enabled
       service:
         name: docker
         state: started
         enabled: true
 
-    - name: Install Docker Compose
+    - name: Install Docker Compose (v2.24.6)
       get_url:
         url: https://github.com/docker/compose/releases/download/v2.24.6/docker-compose-linux-x86_64
         dest: /usr/local/bin/docker-compose
         mode: '0755'
+
+    - name: Verify Docker Compose installation
+      command: docker-compose --version
+      register: compose_version_output
+      changed_when: false
+
+    - name: Debug Docker Compose version
+      debug:
+        var: compose_version_output.stdout
 
     - name: Clone the Git repository
       git:
@@ -44,3 +65,4 @@
       command: docker-compose up --build -d
       args:
         chdir: /home/azureuser/Krinik.in
+
