@@ -1,9 +1,9 @@
 ---
-- name: Azure Deployment with Docker and Compose
-  hosts: azure
-  become: true
+- name: Setup Docker, Docker Compose, and clone Git repo
+  hosts: all
+  become: yes
 
-   vars:
+  vars:
     docker_compose_version: "v2.27.0"
     git_repo_url: "https://github.com/your-user/your-repo.git"
     clone_dest: "/opt/your-repo"
