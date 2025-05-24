@@ -29,9 +29,14 @@ jobs:
         uses: webfactory/ssh-agent@v0.5.4  # Fixed version
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
+          
       - name: Run Ansible Playbook
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: "False"
         run: |
-          ansible-playbook deployment.yml -i inventory.ini
+          eval "$(ssh-agent -s)"
+          ssh-add ~/.ssh/id_rsa
+          ansible-playbook deploy_project.yml -i inventory.ini
+
 
     
