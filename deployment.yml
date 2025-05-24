@@ -45,6 +45,12 @@
         dest: /usr/local/bin/docker-compose
         mode: '0755'
 
+   - name: Remove broken Ansible PPA on Ubuntu 24.04
+      apt_repository:
+         repo: ppa:ansible/ansible
+         state: absent
+         
+
     - name: Clone Git repository
       git:
         repo: "{{https://github.com/TirthMesariya/Krinik.in.git }}"
