@@ -1,12 +1,14 @@
 name: Deploy with Ansible
 
 on:
- push:
-    branches: [ "main" ]
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
@@ -24,7 +26,7 @@ jobs:
           ansible-galaxy collection install community.docker
 
       - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.8.1
+        uses: webfactory/ssh-agent@v0.5.4  # Fixed version
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
