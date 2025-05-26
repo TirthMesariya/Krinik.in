@@ -39,24 +39,11 @@
         state: latest
         update_cache: yes
         
-    - name: Run diagnostic shell command
-       shell: |
-         your-command 2>stderr.log || true
-       register: result
-
-- name: Print error output
-  debug:
-    var: result.stderr_lines
-
-
     - name: Download Docker Compose
       get_url:
         url: "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-linux-x86_64"
         dest: /usr/local/bin/docker-compose
-        mode: '0755'
-
-
-         
+        mode: '0755' 
 
     - name: Clone Git repository
       git:
